@@ -1,0 +1,20 @@
+import { SignInButton } from '@clerk/clerk-react'
+import React from 'react'
+import { Button } from './components/ui/button.jsx'
+import Header from './components/Header.jsx'
+import Hero from './components/Hero.jsx'
+import Category from './components/Category.jsx'
+import MostSearchCar from './components/MostSearchCar.jsx'
+
+function Home() {
+  return (
+    <div>
+    <Header />
+    <Hero />
+    <Category />
+    <MostSearchCar />
+    </div>
+  )
+}
+
+export default Home
