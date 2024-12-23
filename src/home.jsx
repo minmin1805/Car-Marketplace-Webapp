@@ -5,6 +5,8 @@ import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Category from './components/Category.jsx'
 import MostSearchCar from './components/MostSearchCar.jsx'
+import InfoSection from './components/InfoSection.jsx'
+import Footer from './components/Footer.jsx'
 
 function Home() {
   return (
@@ -13,6 +15,8 @@ function Home() {
     <Hero />
     <Category />
     <MostSearchCar />
+    <InfoSection />
+    <Footer />
     </div>
   )
 }

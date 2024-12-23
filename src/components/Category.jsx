@@ -3,7 +3,7 @@ import React from 'react'
 
 function Category() {
   return (
-    <div className='mt-40'>
+    <div className='mt-20'>
 
         <h2 className='font-bold text-3xl text-center mb-6'>Browse by Type</h2>
 

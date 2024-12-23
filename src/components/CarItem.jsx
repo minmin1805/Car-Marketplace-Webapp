@@ -17,7 +17,7 @@ function CarItem({car}) {
             <div className='grid grid-cols-3 mt-5'>
                 <div className='flex flex-col items-center'>
                 <BsFuelPump className='text-lg mb-2' />
-                <h2>{car.miles}</h2>
+                <h2>{car.miles} Miles</h2>
                 </div>
                 <div className='flex flex-col items-center'>
                 <BsSpeedometer2 className='text-lg mb-2' />
