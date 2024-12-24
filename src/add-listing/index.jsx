@@ -11,13 +11,21 @@ import { Button } from '@/components/ui/button'
 import { db } from './../../configs'
 import { CarListing } from './../../configs/schema'
 import IconField from './components/IconField'
+import UploadImages from './components/UploadImages'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
+
 
 function AddListing() {
 
 const [formData, setFormData] = useState([]);
-
 const [featuresData, setFeaturesData] = useState([]);
-
+const [triggerUploadImages, setTriggerUploadImages] = useState(false);
+const [loader, setLoader] = useState(false);
+const navigate=useNavigate();
+const {user}=useUser();
 
 const handleInputChange=(name, value) => {
     setFormData((prevData) => ({
@@ -36,22 +44,31 @@ const handleFeatureChange=(name, value) => {
 }
 
 const onSubmit=async(e) => {
+    setLoader(true);
     e.preventDefault();
     console.log(formData);
+    toast('Please Wait....')
 
     try{
     const result=await db.insert(CarListing).values({
         ...formData,
-        features: featuresData
-    });
+        features: featuresData,
+        createdBy:user?.primaryEmailAddress?.emailAddress,
+        postedOn: new Date(),
+        
+    }).returning({id:CarListing.id});
 
     if(result) {
         console.log("Data Inserted Successfully");
+        setTriggerUploadImages(result[0]?.id);
+        setLoader(false);
     }
     }catch(e) {
         console.log("Error", e)
     }
 }
+
+
 
   return (
     <div>
@@ -90,8 +107,13 @@ const onSubmit=async(e) => {
                     </div>
                 </div>
                 {/*Car Images */}
+                <Separator className='my-6'/>
+        <UploadImages triggerUploadImages={triggerUploadImages} setLoader={(v)=> {setLoader(v);navigate('/profile')}}/>
+
                 <div className='mt-10 justify-end flex'>
-                    <Button type="submit" onClick={(e) => onSubmit(e)}>Submit </Button>
+                    <Button disabled={loader} type="submit" onClick={(e) => onSubmit(e)}> {!loader?'Submit': 
+                    <AiOutlineLoading3Quarters className='animate-spin text-lg' />} 
+                    </Button>
                 </div>
             </form>
         </div>
