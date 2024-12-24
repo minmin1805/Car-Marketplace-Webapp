@@ -10,10 +10,14 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import { db } from './../../configs'
 import { CarListing } from './../../configs/schema'
+import IconField from './components/IconField'
 
 function AddListing() {
 
 const [formData, setFormData] = useState([]);
+
+const [featuresData, setFeaturesData] = useState([]);
+
 
 const handleInputChange=(name, value) => {
     setFormData((prevData) => ({
@@ -23,12 +27,23 @@ const handleInputChange=(name, value) => {
     console.log(formData);
 }
 
+const handleFeatureChange=(name, value) => {
+    setFeaturesData((prevData) => ({
+        ...prevData,
+        [name]: value
+    }))
+    console.log(featuresData);
+}
+
 const onSubmit=async(e) => {
     e.preventDefault();
     console.log(formData);
 
     try{
-    const result=await db.insert(CarListing).values(formData);
+    const result=await db.insert(CarListing).values({
+        ...formData,
+        features: featuresData
+    });
 
     if(result) {
         console.log("Data Inserted Successfully");
@@ -50,7 +65,9 @@ const onSubmit=async(e) => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
                         {carDetails.carDetails.map((item, index) => (
                             <div key={index}>
-                                <label className='text-sm'>{item?.label} {item.required&&<span className='text-red-600'>*</span>}</label>
+                                <label className='text-sm flex gap-2 items-center mb-2'>
+                                <IconField icon={item?.icon}/>
+                                {item?.label} {item.required&&<span className='text-red-600'>*</span>}</label>
                             {item.fieldType=='text' || item.fieldType=='number'? <InputField item={item} handleInputChange={handleInputChange}/>
                             :item.fieldType=='dropdown'? <DropdownField item={item} handleInputChange={handleInputChange}/> 
                             :item.fieldType=='textarea'? <TextAreaField item={item} handleInputChange={handleInputChange}/> : null
@@ -66,7 +83,7 @@ const onSubmit=async(e) => {
                     <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>
                     {features.features.map((item,index) => (
                         <div key={index} className='flex gap-2 items-center'>
-                            <Checkbox class= 'bg-white border-black' onCheckedChange={(value) => handleInputChange(item.name, value)}/>
+                            <Checkbox class= 'bg-white border-black' onCheckedChange={(value) => handleFeatureChange(item.name, value)}/>
                             <h2>{item?.label}</h2>
                         </div>
                     ))}
