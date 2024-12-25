@@ -13,6 +13,8 @@ import Pricing from '../components/Pricing';
 import Specification from '../components/Specification';
 import OwnerDetail from '../components/OwnerDetail';
 import Footer from '@/components/Footer';
+import FinancialCalculator from '../components/FinancialCalculator';
+import MostSearchCar from '@/components/MostSearchCar';
 
 function ListingDetail() {
 
@@ -50,6 +52,9 @@ function ListingDetail() {
                     <Description carDetail={car}/>
                     {/*Features */}
                     <Features features={car?.features}/>
+                    {/*Calculator */}
+                    <FinancialCalculator carDetail={car}/>
+
                 </div>
                 {/*Right Side */}
                 <div >
@@ -65,6 +70,8 @@ function ListingDetail() {
                 </div>
             </div>
         </div>
+
+        <MostSearchCar />
         
         <div className='w-full mt-5'>
             <Footer />
