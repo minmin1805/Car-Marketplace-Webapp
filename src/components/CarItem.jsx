@@ -4,7 +4,7 @@ import { BsSpeedometer2 } from "react-icons/bs";
 import { TbAutomaticGearbox } from "react-icons/tb";
 import { MdOpenInNew } from "react-icons/md";
 import { Link, useParams } from 'react-router-dom';
-import { Separator } from '@radix-ui/react-separator';
+import { Separator } from './ui/separator';
 
 function CarItem({car}) {
   return (

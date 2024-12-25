@@ -5,11 +5,11 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select"
-import { Separator } from "@/components/ui/separator"
 import { IoIosSearch } from "react-icons/io";
 import React from 'react'
 import Data from "@/Shared/Data";
 import { Link } from "react-router-dom";
+import { Separator } from "./ui/separator";
 
 function Search() {
 
