@@ -11,6 +11,8 @@ import Description from '../components/Description';
 import Features from '../components/Features';
 import Pricing from '../components/Pricing';
 import Specification from '../components/Specification';
+import OwnerDetail from '../components/OwnerDetail';
+import Footer from '@/components/Footer';
 
 function ListingDetail() {
 
@@ -58,10 +60,15 @@ function ListingDetail() {
                     <Specification carDetail={car}/>
 
                     {/*seller info */}
-                </div>
+                    <OwnerDetail carDetail={car}/> 
 
+                </div>
             </div>
         </div>
+        
+        <div className='w-full mt-5'>
+            <Footer />
+            </div>
 
     </div>
   )
