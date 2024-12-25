@@ -4,9 +4,11 @@ import { BsSpeedometer2 } from "react-icons/bs";
 import { TbAutomaticGearbox } from "react-icons/tb";
 import {Separator } from '/Users/minmin/car-management/car-marketplace/src/components/ui/separator.jsx';
 import { MdOpenInNew } from "react-icons/md";
+import { Link, useParams } from 'react-router-dom';
 
 function CarItem({car}) {
   return (
+    <Link to={'/listing-details/'+car?.id}>
     <div className='rounded-xl bg-white border hover:shadow-md cursor-pointer'>
     <h2 className='absolute m-2 bg-green-500 px-2 rounded-full text-sm text-white'>New</h2>
         <img src={car?.images[0]?.imageUrl} width={'100%'} height={250} className='rounded-t-xl h-[180px] object-cover'/>
@@ -36,7 +38,8 @@ function CarItem({car}) {
               <MdOpenInNew /></h2>
             </div>
         </div>
-    </div>
+        </div>
+        </Link>
   )
 }
 
