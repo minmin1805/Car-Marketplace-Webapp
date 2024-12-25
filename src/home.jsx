@@ -11,6 +11,13 @@ import Footer from './components/Footer.jsx'
 function Home() {
   return (
     <div>
+
+    <div>
+      <SignInButton mode='modal' forceRedirectUrl='/' >
+          <Button>Sign In</Button>
+      </SignInButton>
+    </div>
+
     <Header />
     <Hero />
     <Category />

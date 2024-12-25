@@ -5,11 +5,26 @@ import React, { useEffect, useState } from 'react'
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { db } from './../../../configs'
 import { CarImages } from './../../../configs/schema';
+import { eq } from 'drizzle-orm';
 
 
-function UploadImages({triggerUploadImages, setLoader}) {
+function UploadImages({triggerUploadImages, setLoader, carInfo, mode}) {
 
-const  [selectedFileList, setSelectedFileList]= useState([]);
+const [selectedFileList, setSelectedFileList]= useState([]);
+const [editCarImageList, setEditCarImageList]=useState([]);
+
+useEffect(() => {
+    if (mode === 'edit') {
+        setEditCarImageList([]);
+        carInfo?.images?.forEach((image) => {
+            setEditCarImageList((prev) => [...prev, image.imageUrl]);
+            console.log(image);
+        });
+    }
+}, [mode, carInfo]);
+
+
+
 
 useEffect(() => {
     if(triggerUploadImages) {
@@ -57,10 +72,27 @@ const onImageRemove=(image, index) => {
     setSelectedFileList(result);
 }
 
+const onImageRemoveFromDB=async(image, index) => {
+    const result=await db.delete(CarImages).where(eq(CarImages.id, carInfo?.images[index]?.id)).returning({id:CarImages.id});
+
+    const imageList=editCarImageList.filter((item) => item!=image);
+    setEditCarImageList(imageList);
+}
+
   return (
     <div>
     <h2 className='font-medium text-xl my-3'>Upload Car Images</h2>
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5'>
+        
+        {mode=='edit'&&
+        editCarImageList.map((image, index) => (
+            <div key={index}>
+            <IoCloseCircleSharp className='absolute m-2 text-lg text-white ' onClick={() => onImageRemoveFromDB(image, index)}/>
+                <img src={image} className='w-full h-[130px] object-cover rounded-xl  ' /> 
+            </div>
+        ))
+        }
+
         {selectedFileList.map((image, index) => (
             <div key={index}>
             <IoCloseCircleSharp className='absolute m-2 text-lg text-white ' onClick={() => onImageRemove(image, index)}/>
