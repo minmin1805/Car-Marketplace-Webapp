@@ -2,9 +2,9 @@ import React from 'react'
 import { BsFuelPump } from "react-icons/bs";
 import { BsSpeedometer2 } from "react-icons/bs";
 import { TbAutomaticGearbox } from "react-icons/tb";
-import {Separator } from '/Users/minmin/car-management/car-marketplace/src/components/ui/separator.jsx';
 import { MdOpenInNew } from "react-icons/md";
 import { Link, useParams } from 'react-router-dom';
+import { Separator } from '@radix-ui/react-separator';
 
 function CarItem({car}) {
   return (
