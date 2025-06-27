@@ -33,7 +33,7 @@ function CarItem({car}) {
             <Separator className='my-2'/>
             <div className='flex items-center justify-between'>
               <h2 className='font-bold text-xl text-blue-500'>${car?.sellingPrice}</h2>
-              <h2 className='text-primary text-sm flex gap-2 items-center text-blue-500'>
+              <h2 className=' text-sm flex gap-2 items-center text-blue-500'>
               View Details 
               <MdOpenInNew /></h2>
             </div>

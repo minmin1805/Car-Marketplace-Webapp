@@ -2,17 +2,17 @@ import { SignInButton, UserButton, useUser } from '@clerk/clerk-react';
 import React from 'react'
 import { Button } from './ui/button'; 
 import { Link } from 'react-router-dom';
+import webLogo from "../../public/weblogo.png"
 
 function Header() {
   const {user, isSignedIn} = useUser();
 
   return (
-    <div className="flex justify-between items-center shadow-sm p-5">
+    <div className="flex justify-between items-center shadow-sm p-3">
 
-
-
-        <Link to={'/'}>
-        <img src='/logo.svg' width={150} height={100} /> 
+        <Link to={'/'} className='flex items-center'>
+        <img src={webLogo} width={60} height={60} /> 
+        <span className='text-md font-bold text-blue-500'>CarCentral</span>
         </Link>
 
         <ul className='flex items-center gap-20'>

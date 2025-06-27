@@ -1,18 +1,17 @@
 import React from 'react'
+import webLogo from "../../public/weblogo.png"
 
 function Footer() {
   return (
 <footer className="bg-gray-100">
-  <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-    <div className="flex justify-center text-teal-600">
-      {/* <svg className="h-8" viewBox="0 0 118 24" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-      <img src='/logo.svg' width={150} height={100} /> 
-      {/* </svg> */}
+  <div className="mx-auto max-w-6xl px-10 py-10 sm:px-6 lg:px-8">
+    <div className="flex justify-center text-teal-600 items-center">
+      <img src={webLogo} width={60} height={60} /> 
+      <span className='text-md font-bold text-blue-500'>CarCentral</span>
     </div>
 
-    <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-    At Calescence, we redefine the car buying and selling experience. With a wide selection of vehicles, trusted sellers, and seamless services, we make finding your perfect ride easier than ever. Join us and explore the future of automotive marketplaces.
-    </p>
+    <p className="mx-auto mt-6 max-w-lg text-center leading-relaxed text-gray-500">
+    CarCentral transforms how you buy and sell cars. Discover thousands of quality vehicles from verified dealers and private sellers, all backed by our streamlined platform that puts you in the driver's seat. Your perfect car is just a click away    </p>
 
     <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
       <li>
