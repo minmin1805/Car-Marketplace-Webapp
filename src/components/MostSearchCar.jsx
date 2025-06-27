@@ -35,7 +35,7 @@ function MostSearchCar() {
     }
   return (
     <div class='mx-24'>
-    <h2 className='font-bold text-3xl text-center mt-16 mb-7'>Most Searched Cards</h2>
+    <h2 className='font-bold text-3xl text-center mt-16 mb-7'>Most Searched Cars Right Now</h2>
     
     <Carousel>
   <CarouselContent>
