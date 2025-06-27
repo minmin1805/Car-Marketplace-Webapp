@@ -16,24 +16,24 @@ function DetailHeader({carDetail}) {
 
     <div className='flex gap-2 mt-3'>
         <div className='flex items-center gap-2 bg-blue-50 rounded-full p-2 px-3'>
-            <HiCalendarDateRange className='h-7 w-7 text-primary'/>
-            <h2 className='text-primary text-sm'>{carDetail?.year}</h2>
+            <HiCalendarDateRange className='h-7 w-7 text-blue-500'/>
+            <h2 className='text-blue-500 text-sm'>{carDetail?.year}</h2>
         </div>
 
         <div className='flex items-center gap-2 bg-blue-50 rounded-full p-2 px-3'>
-        <MdSpeed className='h-7 w-7 text-primary'/>
+        <MdSpeed className='h-7 w-7 text-blue-500'/>
 
-            <h2 className='text-primary text-sm'>{carDetail?.mileage}</h2>
+            <h2 className='text-blue-500 text-sm'>{carDetail?.mileage}</h2>
         </div>
 
         <div className='flex items-center gap-2 bg-blue-50 rounded-full p-2 px-3'>
-            <GiGearStickPattern className='h-7 w-7 text-primary'/>
-            <h2 className='text-primary text-sm'>{carDetail?.transmission}</h2>
+            <GiGearStickPattern className='h-7 w-7 text-blue-500'/>
+            <h2 className='text-blue-500 text-sm'>{carDetail?.transmission}</h2>
         </div>
 
         <div className='flex items-center gap-2 bg-blue-50 rounded-full p-2 px-3'>
-            <BiSolidGasPump className='h-7 w-7 text-primary'/>
-            <h2 className='text-primary text-sm'>{carDetail?.fuelType}</h2>
+            <BiSolidGasPump className='h-7 w-7 text-blue-500'/>
+            <h2 className='text-blue-500 text-sm'>{carDetail?.fuelType}</h2>
         </div>
     </div>
     </div> :
